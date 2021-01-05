@@ -1,0 +1,192 @@
+<style id="style">
+    :root {
+        --primary-color: $primary_color;
+        --secondary-color: $secondary_color;
+    }
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: "$font_size";
+        margin: $global_margin;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .header-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+
+    .header-container .company-logo {
+        height: 4rem;
+    }
+
+    #company-details {
+        display: flex;
+        flex-direction: column;
+        color: #9f9f9f;
+    }
+
+    #company-details > span:first-child {
+        color: var(--primary-color);
+    }
+
+    #company-address {
+        display: flex;
+        flex-direction: column;
+        color: #9f9f9f;
+    }
+
+    .entity-label {
+        text-transform: uppercase;
+        margin-top: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .client-and-entity-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem;
+        border-top: 1px solid #9f9f9f;
+        border-bottom: 1px solid #9f9f9f;
+    }
+
+    #entity-details {
+        text-align: left;
+    }
+
+    #entity-details > tr,
+    #entity-details th {
+        font-weight: normal;
+    }
+
+    #client-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #client-details > :first-child {
+        font-weight: bold;
+    }
+
+    #product-table,
+    #delivery-note-table,
+    #task-table {
+        margin-top: 3rem;
+        /* margin-bottom: 200px; */
+        min-width: 100%;
+        table-layout: fixed;
+        overflow-wrap: break-word;
+    }
+
+    .task-duration {
+        display: block;
+        margin-top: 5px;
+        color: grey;
+    }
+
+    #product-table > thead,
+    #delivery-note-table > thead,
+    #task-table > thead {
+        text-align: left;
+    }
+
+    #product-table > thead > tr > th,
+    #delivery-note-table > thead > tr > th,
+    #task-table > thead > tr > th {
+        font-size: 1.1rem;
+        padding-bottom: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    #product-table > tbody > tr > td,
+    #delivery-note-table > tbody > tr > td,
+    #task-table > tbody > tr > td {
+        border-bottom: 1px solid #9f9f9f;
+        padding: 1rem;
+    }
+
+    #product-table > tbody > tr > td:first-child,
+    #delivery-note-table > tbody > tr > td:first-child,
+    #task-table > tbody > tr > td:first-child {
+        color: var(--primary-color);
+    }
+
+    #product-table > tbody > tr:nth-child(odd),
+    #delivery-note-table > tbody > tr:nth-child(odd),
+    #task-table > tbody > tr:nth-child(odd) {
+        background-color: #f5f5f5;
+    }
+
+    #table-totals {
+        page-break-inside: avoid;
+    }
+
+    #table-totals > * {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        padding-top: .5rem;
+        padding-left: 1rem;
+        gap: 20px;
+    }
+
+    #table-totals
+    > *
+    [data-element='product-table-balance-due-label'],
+    #table-totals
+    > *
+    [data-element='product-table-balance-due'] {
+        font-weight: bold;
+    }
+
+    #table-totals
+    > *
+    [data-element='product-table-balance-due'] {
+        color: var(--primary-color);
+    }
+
+    #table-totals > * > :last-child {
+        text-align: right;
+        padding-right: 1rem;
+    }
+</style>
+
+<div id="header"></div>
+
+<div id="body">
+    <div class="header-container">
+        <img
+            class="company-logo"
+            src="$company.logo"
+            alt="$company.name logo"
+        />
+
+        <div id="company-details"></div>
+        <div id="company-address"></div>
+    </div>
+
+    <p class="entity-label">$entity_label</p>
+    <div class="client-and-entity-wrapper">
+        <table id="entity-details" cellspacing="0"></table>
+
+        <div id="client-details"></div>
+    </div>
+
+    <table id="product-table" cellspacing="0"></table>
+
+    <table id="task-table" cellspacing="0"></table>
+
+    <div id="table-totals" cellspacing="0"></div>
+
+    <table id="delivery-note-table" cellspacing="0"></table>
+</div>
+
+<div id="footer">$entity_footer</div>
